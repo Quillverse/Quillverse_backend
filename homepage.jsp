@@ -57,17 +57,6 @@
     border-radius: 5px;
     width: 90%;
     }
-    
-    .slide {
-    border: 1px solid #ccc;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin-left: 26px;
-
-}
 
     /* Styling for the category buttons */
     .category-button {
@@ -86,6 +75,78 @@
         color: white;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Drop shadow for depth */
     }
+aside {
+    position: sticky;
+    top: 6px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 0 20px;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    width: 410px; /* Adjust as needed */
+}
+
+aside h2 {
+    color: #888; /* Dimmed text color */
+}
+
+.explore-topics {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#categoryButtons {
+    width: 100%;
+}
+
+.category-button {
+    position: relative;
+    width: 100%;
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 10px;
+    background-color: #f0f0f0; /* Button background color */
+    border: 1px solid #ccc; /* Button border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; 
+    color:#C0C0C0;
+}
+
+.category-button::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top:0;
+    width: 10px;
+    height: 10px;
+    background-color: lightgreen;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.category-button:hover::before {
+    background-color: limegreen;
+}
+
+#categoryForm button {
+    width: 110%;
+    padding: 10px; /* Match padding with category buttons */
+    background-color: #7CB9E8;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#categoryForm button:hover {
+    background-color: #0056b3;
+}
+
+
 
     /* Styling for the "Show Posts" button */
     button[type="button"] {
@@ -98,7 +159,6 @@
         border-radius: 5px;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Drop shadow for depth */
     }
-    <style>
   /* Style to make the anchor tag look like an input field */
   .fake-input {
     border: 1px solid #ccc;
@@ -114,43 +174,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-    <!-- Your head content goes here -->
-    <style>
-        /* CSS for like and comment buttons */
-        .like-comment-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .like-button, .comment-button {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .like-button:hover, .comment-button:hover {
-            color: blue; /* Change color on hover */
-        }
-          #username-container {
-
-    top: 16px; /* Adjust this value to position it vertically */
-    right: 90px; /* Adjust this value to position it horizontally */
-    background-color: #f0f0f0; /* Background color */
-    padding: 10px; /* Add some padding for spacing */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Drop shadow for depth */
-
-    cursor: pointer; /* Change cursor to pointer on hover */
-  }
-
-  /* Style for the username text */
-  #username {
-    font-size: 16px; /* Adjust font size */
-    font-weight: bold; /* Bold text */
-    color: #333; /* Text color */
-
-  }
   
+    
 
   /* Hover effect for username */
 
@@ -183,7 +208,77 @@ font:bold;
     border-radius: 30%;
     margin-left: 23px;
 }
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+#newPostForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 800px;
+    background: #2d3748;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+#newPostForm h2 {
+    margin-top: 0;
+    color: #a0aec0;
+}
+
+#newPostForm label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #cbd5e0;
+}
+
+#newPostForm input[type="text"],
+#newPostForm textarea,
+#newPostForm select,
+#newPostForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #4a5568;
+    border-radius: 5px;
+    background: #1a202c;
+    color: #a0aec0;
+}
+
+#newPostForm input[type="submit"],
+.close-btn {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#newPostForm input[type="submit"]:hover,
+.close-btn:hover {
+    background: #45a049;
+}
 </style>
+
 </head>
 
 <body>
@@ -195,26 +290,44 @@ font:bold;
             <ul class="nav-links">
                 <li><a href="homepage.jsp">Home</a></li>
                 <li><a href="aboutus.jsp">About</a></li>
-                <li><a href="membership.jsp">Membership</a></li>
-                     <li><a href="new post.jsp"><input type="text" placeholder="Add  New  Post"></a></li>
+                <li><a href="http://localhost:8080">Chat Room</a></li>
+                <li><a href="#" onclick="toggleNewPostForm()"><input type="text" placeholder="Add New Post"></a></li>
             </ul>
- <div class="user">
+            <div class="user">
+                <% 
+                    // Retrieve image URL from the database
+                    String UserimageUrl = ""; // Initialize with default value
+                    try {
+                        // Establish database connection and retrieve image URL
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog_db?useSSL=false", "root", "Shahil");
+                        PreparedStatement stmt = conn.prepareStatement("SELECT ImageURL FROM Users WHERE UserID = ?");
+                        stmt.setInt(1, (int) session.getAttribute("userID"));
+                        ResultSet rs = stmt.executeQuery();
+                        if (rs.next()) {
+                            UserimageUrl = rs.getString("ImageURL");
+                        }
+                %>
+                <img src="<%= UserimageUrl %>" alt="userDP.png" style="width:35px; height:35px; border-radius:50%;">
 
-                <div class="user-btn"><a href="userprofile.jsp"><i class="fa-solid fa-user" style="color: #2D6A4F;"></i></a></div>
-                <div id="username-container">
-  <div id="username"></div>
-</div>
+                <% 
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                %>
             </div>
         </nav>
     </header>
     <main>
-        <section class="slider-container">
-            <div class="top-reads-title">
-                <h2>Top reads</h2>
-            </div>
+ <section class="slider-container">
+        <div class="top-reads-title">
+            <h2>Top reads</h2>
+        </div>
 
-         <div class="book-slider-content">
-            <div class="book-wrapper">
+        <div class="book-slider-content">
+            <div class="book-wrapper" id="slider">
                 <i id="left" class="fa-solid fa-angle-left"></i>
 
                 <!-- Iterate over the result set and display posts in the book-slider-content -->
@@ -222,8 +335,7 @@ font:bold;
                 try {
                     // Establish database connection
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog_db", "root", "Shahil");
-
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog_db?useSSL=false", "root", "Shahil");
                     // Query to retrieve posts and usernames
                     String query = "SELECT p.*, u.username FROM Posts p INNER JOIN Users u ON p.UserID = u.UserID";
                     PreparedStatement pstmt = conn.prepareStatement(query);
@@ -235,16 +347,19 @@ font:bold;
                         String title = rs.getString("Title");
                         String content = rs.getString("Content");
                         String username = rs.getString("username");
+                        String imageUrl = rs.getString("ImageURL");
                         int postId = rs.getInt("PostID");
-                        int halfLength = content.length() /5;
+                        int halfLength = content.length() / 5;
                         String halfContent = content.substring(0, halfLength) + ". . . . . . . . . ."; // Concatenate ellipsis to the half content
                 %>
-                <div class="book-content">
+                <a href="fullarticle.jsp?postId=<%= postId %>">
+                <div class="book-content" style="background-image: url('<%= imageUrl %>')">
                     <h2><%= title %></h2>
                     <!-- Display only half of the content -->
                     <p><%= halfContent %></p>
                     <h5><%= username %></h5>
                 </div>
+                </a>
                 <% 
                     }
                     rs.close();
@@ -258,16 +373,34 @@ font:bold;
                 <i id="right" class="fa-solid fa-angle-right"></i>
             </div>
         </div>
+    </section>
 
-        </section>
        <section class="container">
+        <aside>
+    <h2>Explore Topics</h2>
+    <div class="explore-topics">
+        <div id="categoryButtons">
+            <button class="category-button" value="1" onclick="getPosts(this)">Programming</button>
+            <button class="category-button" value="2" onclick="getPosts(this)">self-growth</button>
+            <button class="category-button" value="3" onclick="getPosts(this)">Productivity</button>
+            <button class="category-button" value="4" onclick="getPosts(this)">Data Science</button>
+            <button class="category-button" value="5" onclick="getPosts(this)">Technology</button>
+            <button class="category-button" value="6" onclick="getPosts(this)">Relationship</button>
+            <button class="category-button" value="7" onclick="getPosts(this)">Money</button>
+            <button class="category-button" value="8" onclick="getPosts(this)">Food</button>
+        </div>
+        <form id="categoryForm" method="get" action="PostsByCategoryServlet">
+            <input type="hidden" id="selectedCategory" name="category">
+            <button type="button" onclick="submitForm()">Show Posts</button>
+        </form>
+    </div>
+</aside>
             <div class="content">
         <% 
             try {
                 // Establish database connection
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog_db", "root", "Shahil");
-
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog_db?useSSL=false", "root", "Shahil");
                 // Query to retrieve posts and usernames
                 String query = "SELECT p.*, u.username FROM Posts p INNER JOIN Users u ON p.UserID = u.UserID";
                 PreparedStatement pstmt = conn.prepareStatement(query);
@@ -308,25 +441,7 @@ font:bold;
         %> 
             </div>
 
-   <aside>
-    <h2>Explore Topics</h2>
-    <div class="explore-topics">
-        <div id="categoryButtons">
-            <button class="category-button" value="1" onclick="getPosts(this)">Programming</button>
-            <button class="category-button" value="2" onclick="getPosts(this)">Self Improvement</button>
-            <button class="category-button" value="3" onclick="getPosts(this)">Productivity</button>
-            <button class="category-button" value="4" onclick="getPosts(this)">Data Science</button>
-            <button class="category-button" value="5" onclick="getPosts(this)">Technology</button>
-            <button class="category-button" value="6" onclick="getPosts(this)">Relationship</button>
-            <button class="category-button" value="7" onclick="getPosts(this)">Money</button>
-            <button class="category-button" value="8" onclick="getPosts(this)">Food</button>
-        </div>
-        <form id="categoryForm" method="get" action="PostsByCategoryServlet">
-            <input type="hidden" id="selectedCategory" name="category">
-            <button type="button" onclick="submitForm()">Show Posts</button>
-        </form>
-    </div>
-</aside>
+  
     </section>
     </main>
     <footer>
@@ -345,7 +460,38 @@ font:bold;
         <hr>
         <p class="copyright">Copyright &copy;2024 | Quillverse</p>
     </footer>
-<!-- Your HTML content goes here -->
+    <div class="overlay" onclick="toggleNewPostForm()"></div>
+
+    <!-- New Post Form -->
+    <div id="newPostForm">
+        <h2>Add New Post</h2>
+        <form action="AddPostServlet" method="post" enctype="multipart/form-data">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="10" required></textarea>
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="1">Programming</option>
+                <option value="2">Self-growth</option>
+                <option value="3">Productivity</option>
+                <option value="4">Data Science</option>
+                <option value="5">Technology</option>
+                <option value="6">Relationship</option>
+                <option value="7">Money</option>
+                <option value="8">Food</option>
+            </select>
+
+            <input type="submit" value="Add Post">
+            <div class="close-btn" onclick="toggleNewPostForm()">Close</div>
+        </form>
+    </div>
+
 
 <script>
     function getPosts(button) {
@@ -362,16 +508,16 @@ font:bold;
         document.getElementById('categoryForm').submit();
     }
 </script>
-<script>
-    // Check if session contains username
-    var username = "<%= session.getAttribute("username") %>";
-    if (username && username.length > 0) {
-        // Display username below user section
-        document.getElementById("username").innerText =  username;
-    }
+
+<script src="homepage.js"></script>
+<script>function toggleNewPostForm() {
+    var overlay = document.querySelector('.overlay');
+    var newPostForm = document.getElementById('newPostForm');
+    overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+    newPostForm.style.display = newPostForm.style.display === 'block' ? 'none' : 'block';
+}
 </script>
 </body>
 
-<script src="homepage.js"></script>
 
 </html>
